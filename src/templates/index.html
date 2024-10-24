@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSi Book Recommendations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="../static/styles.css" rel="stylesheet"> <!-- Linking the external CSS file -->
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="header-content">
+                <h1>Your Personalized Book Recommendations</h1>
+                <p>by HSi</p>
+            </div>
+            <form method="POST" class="form">
+                <label for="book_name" class="form-label">Select a Book:</label>
+                <select name="book_name" id="book_name" class="dropdown">
+                    {% for book in book_names %}
+                        <option value="{{ book }}" {% if selected_book == book %}selected{% endif %}>{{ book }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn">Show Recommendations <i class="fas fa-arrow-right"></i></button>
+            </form>
+            {% if recommended_books %}
+            <h2>Recommended Books for You</h2>
+            <div class="book-grid">
+                {% for i in range(0, 5) %}
+                <div class="book-card">
+                    <img src="{{ poster_urls[i] }}" alt="Book Poster" class="book-img"> <!-- Updated variable name -->
+                    <p class="book-title">{{ recommended_books[i] }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
