@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
-import pickle
 import numpy as np
+import pickle
 import os
 from dotenv import load_dotenv
 
