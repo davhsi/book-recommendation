@@ -1,3 +1,4 @@
 hsi/
 .env
 __pycache__/
+data/
